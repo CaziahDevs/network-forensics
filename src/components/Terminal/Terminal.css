@@ -1,0 +1,28 @@
+.terminal {
+  background: #000;
+  color: #00ff00;
+  padding: 20px;
+  border-radius: 5px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  max-height: 500px; 
+  min-height: 400px; 
+  overflow-y: auto;
+  margin-top: 50px;
+  width: 100%;
+  height: 50%;
+  box-sizing: border-box; 
+
+}
+
+.terminalContent {
+  text-align: left;
+  width: 100%;
+  height: 100%;
+}
+
+.terminalTitle {
+    margin-top: 20px;
+}

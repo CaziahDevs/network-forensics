@@ -3,6 +3,7 @@ import './App.css';
 
 // Types
 import type { Device, DeviceStatus, Scenario, DeviceLog } from './types';
+import Modal from './components/common/Modal/Modal';
 
 // Mock data for now - we'll move this to a separate file later
 const mockDevices: Device[] = [
@@ -248,19 +249,7 @@ function App() {
         )}
 
         {/* Modal for logs */}
-        {selectedLog && (
-          <div className="modal" onClick={() => setSelectedLog(null)}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <span className="close" onClick={() => setSelectedLog(null)}>
-                &times;
-              </span>
-              <h2>{selectedLog.title}</h2>
-              <div className="terminal">
-                <pre>{selectedLog.content}</pre>
-              </div>
-            </div>
-          </div>
-        )}
+        {selectedLog && <Modal selectedLog={selectedLog} setSelectedLog={setSelectedLog}/>}
       </div>
     </div>
   );
