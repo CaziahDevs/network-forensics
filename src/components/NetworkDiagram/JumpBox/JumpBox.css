@@ -1,0 +1,30 @@
+.jump-box {
+  background: linear-gradient(145deg, #6fa3ef, #4a8bdc);
+  border: 3px solid #3a6da8;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.jump-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.jb-title {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.jb-name {
+  font-size: 1.2rem;
+  color: #d0e7ff;
+  margin-bottom: 5px;
+}
+.jb-hint {
+  font-size: 1.2rem;
+  color: #d0e7ff;
+  margin-bottom: 15px;
+}

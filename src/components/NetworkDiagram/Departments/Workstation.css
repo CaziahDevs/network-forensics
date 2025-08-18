@@ -1,0 +1,77 @@
+.workstation {
+  background: linear-gradient(145deg, #4a90e2, #357abd);
+  border: 3px solid #2c5282;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.workstation:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-color: #00ff88;
+}
+
+.workstation.infected {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+}
+
+.workstation.clean {
+  border-color: #00ff88;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.workstation.origin {
+  border-color: #ffa500;
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.7);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.ws-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ws-ip {
+  font-size: 0.9rem;
+  color: #b0c4de;
+}
+
+.checkboxes {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.checkbox-group input[type="radio"] {
+  transform: scale(1.2);
+}
+
+.checkbox-group label {
+  font-size: 0.8rem;
+  color: #b0c4de;
+}

@@ -1,0 +1,8 @@
+.network-diagram {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 30px;
+  min-height: 500px;
+}

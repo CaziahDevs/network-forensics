@@ -4,6 +4,7 @@ import './App.css';
 // Types
 import type { Device, DeviceStatus, Scenario, DeviceLog } from './types';
 import Modal from './components/common/Modal/Modal';
+import Network from './components/NetworkDiagram/Network/Network';
 
 // Mock data for now - we'll move this to a separate file later
 const mockDevices: Device[] = [
@@ -59,7 +60,7 @@ const mockCorrectAnswers: Record<Device['id'], keyof DeviceStatus> = {
   'rd-ws02': 'origin'
 };
 
-function App() {
+const App: React.FC = () => {
   // State management
   const [userAnswers, setUserAnswers] = useState<Record<Device['id'], keyof DeviceStatus>>({});
   const [showResults, setShowResults] = useState(false);
@@ -96,7 +97,6 @@ function App() {
         correctCount++;
       }
     })
-    console.log('userAnswers:', userAnswers);
 
     return {
       correct: correctCount,
@@ -124,97 +124,13 @@ function App() {
         </section>
 
         {/* Network Diagram */}
-        <section className="network-diagram">
-          {/* Engineering Department */}
-          <div className="org-group">
-            <div className="org-title">Engineering Department</div>
-            {mockDevices
-              .filter(device => device.department === 'engineering')
-              .map(device => (
-                <div
-                  key={device.id}
-                  className={`workstation ${userAnswers[device.id] || ''}`}
-                  onClick={() => showDeviceLogs(device.id)}
-                >
-                  <div className="ws-name">{device.name}</div>
-                  <div className="ws-ip">{device.ip}</div>
-                  <div className="checkboxes">
-                    {(['clean', 'infected', 'origin'] as const).map(status => (
-                      <div key={status} className="checkbox-group">
-                        <input
-                          type="radio"
-                          id={`${device.id}-${status}`}
-                          name={device.id}
-                          value={status}
-                          checked={userAnswers[device.id] === status}
-                          onChange={() => handleAnswerChange(device.id, status)}
-                        />
-                        <label htmlFor={`${device.id}-${status}`}>
-                          {status.charAt(0).toUpperCase() + status.slice(1)}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-          </div>
-
-          {/* Firewall */}
-          <div className="firewall-section">
-            <div className="firewall" onClick={() => showDeviceLogs('firewall')}>
-              <div className="fw-title">🔥 FIREWALL</div>
-              <div className="fw-name">FW-CORE-01</div>
-              <div className="fw-hint">Click to view logs</div>
-            </div>
-
-            <div className="connection-line"></div>
-
-            <div className="cloud">
-              <div className="cloud-icon">☁️ CLOUD</div>
-              <div className="cloud-name">CSP Services</div>
-              <div className="cloud-hint">(Read-only)</div>
-            </div>
-          </div>
-
-          {/* R&D Department */}
-          <div className="org-group">
-            <div className="org-title">R&D Department</div>
-            {mockDevices
-              .filter(device => device.department === 'rd')
-              .map(device => (
-                <div
-                  key={device.id}
-                  className={`workstation ${userAnswers[device.id] || ''}`}
-                  onClick={() => showDeviceLogs(device.id)}
-                >
-                  <div className="ws-name">{device.name}</div>
-                  <div className="ws-ip">{device.ip}</div>
-                  <div className="checkboxes">
-                    {(['clean', 'infected', 'origin'] as const).map(status => (
-                      <div key={status} className="checkbox-group">
-                        <input
-                          type="radio"
-                          id={`${device.id}-${status}`}
-                          name={device.id}
-                          value={status}
-                          checked={userAnswers[device.id] === status}
-                          onChange={() => handleAnswerChange(device.id, status)}
-                        />
-                        <label htmlFor={`${device.id}-${status}`}>
-                          {status.charAt(0).toUpperCase() + status.slice(1)}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-          </div>
-        </section>
-
-        {/* Submit Button */}
-        <button className="submit-btn" onClick={submitAnswers}>
-          Submit Investigation Results
-        </button>
+        <Network
+          devices={mockDevices}
+          userAnswers={userAnswers}
+          onAnswerChange={handleAnswerChange}
+          onShowLogs={showDeviceLogs}
+          submitAnswers={submitAnswers}
+        />
 
         {/* Results */}
         {showResults && (
@@ -249,7 +165,7 @@ function App() {
         )}
 
         {/* Modal for logs */}
-        {selectedLog && <Modal selectedLog={selectedLog} setSelectedLog={setSelectedLog}/>}
+        {selectedLog && <Modal selectedLog={selectedLog} setSelectedLog={setSelectedLog} />}
       </div>
     </div>
   );
