@@ -1,9 +1,10 @@
 import React from 'react'
+import './Network.css';
 import Department from '../Departments/Department'
 import JumpBox from '../JumpBox/JumpBox';
-import './Network.css';
 import type { Device, DeviceStatus } from '../../../types';
 import Firewall from '../Firewall/Firewall';
+import Submit from '../../common/Button/Submit';
 
 interface NetworkProps {
     devices: Device[];
@@ -12,6 +13,7 @@ interface NetworkProps {
     onShowLogs: (deviceId: string) => void;
     submitAnswers: () => void;
 }
+
 const Network: React.FC<NetworkProps> = ({ devices, userAnswers, onAnswerChange, onShowLogs, submitAnswers }) => {
     return (
         <section className="network-diagram">
@@ -26,14 +28,17 @@ const Network: React.FC<NetworkProps> = ({ devices, userAnswers, onAnswerChange,
 
             {/* Firewall */}
             <div className="connection-section">
-                {/* Firewall */}
-                <Firewall onShowLogs={onShowLogs} />
-
-                {  /* Connection line */ }
-                <div className="connection-line"></div>
-
+                
                 {/* Jump box */}
                 <JumpBox onShowLogs={onShowLogs} />
+                {  /* Connection line */ }
+                <div className="connection-line"></div>
+                {/* Firewall */}
+                <Firewall onShowLogs={onShowLogs} />
+                
+                <div className="connection-line"></div>
+
+                <Submit submitAnswers={submitAnswers} />
             </div>
 
             <Department
@@ -43,11 +48,6 @@ const Network: React.FC<NetworkProps> = ({ devices, userAnswers, onAnswerChange,
                 onAnswerChange={onAnswerChange}
                 onShowLogs={onShowLogs}
             />
-
-            {/* Submit Button */}
-            <button className="submit-btn" onClick={submitAnswers}>
-                Submit Investigation Results
-            </button>
         </section>
     )
 }

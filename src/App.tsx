@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import './App.css';
 
 // Types
-import type { Device, DeviceStatus, Scenario, DeviceLog } from './types';
+import type { Device, DeviceStatus, DeviceLog } from './types';
 import Modal from './components/common/Modal/Modal';
 import Network from './components/NetworkDiagram/Network/Network';
-
+import Scenario from './components/ScenarioInfo/Scenario';
 // Mock data for now - we'll move this to a separate file later
 const mockDevices: Device[] = [
   { id: 'eng-ws01', name: 'ENG-WS01', ip: '192.168.1.10', department: 'engineering' },
@@ -115,13 +115,7 @@ const App: React.FC = () => {
         </header>
 
         {/* Scenario Information */}
-        <section className="scenario">
-          <h3>🚨 SECURITY INCIDENT ALERT</h3>
-          <p><strong>Incident ID:</strong> INC-2025-0001</p>
-          <p><strong>Severity:</strong> HIGH</p>
-          <p><strong>Description:</strong> Our network monitoring systems have detected suspicious activity indicating a potential malware infection. Multiple workstations in our Engineering and R&D departments may be compromised.</p>
-          <p><em>Click on workstations to view vulnerability scan results. Click the firewall to examine network traffic logs.</em></p>
-        </section>
+        <Scenario />
 
         {/* Network Diagram */}
         <Network

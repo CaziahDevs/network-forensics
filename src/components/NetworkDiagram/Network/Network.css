@@ -1,8 +1,47 @@
 .network-diagram {
-  display: grid;
-  grid-template-columns: 1fr 100px 1fr;
+  display: flex;
   gap: 40px;
   align-items: center;
   margin-bottom: 30px;
   min-height: 500px;
+  justify-content: center;
+}
+
+.connection-line {
+  width: 2px;
+  background: #00ff88;
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.connection-line::before,
+.connection-line::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: #00ff88;
+  left: -14px;
+}
+
+.connection-line::before {
+  top: 0;
+}
+
+.connection-line::after {
+  bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .network-diagram {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .connection-line {
+    width: 100px;
+    height: 2px;
+    margin: 10px auto;
+  }
 }

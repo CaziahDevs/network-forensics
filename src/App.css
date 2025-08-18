@@ -15,6 +15,8 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .header {
@@ -26,33 +28,6 @@ body {
   font-size: 2rem;
   margin-bottom: 10px;
   color: #00ff88;
-}
-
-.scenario {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  border-left: 4px solid #ff6b6b;
-}
-
-.submit-btn {
-  background: linear-gradient(145deg, #00ff88, #00cc6a);
-  border: none;
-  color: #000;
-  padding: 15px 30px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 20px auto;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 255, 136, 0.3);
 }
 
 .results {
@@ -75,43 +50,4 @@ body {
 
 .score.incorrect {
   color: #ff6b6b;
-}
-
-.connection-line {
-  width: 2px;
-  background: #00ff88;
-  height: 100px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.connection-line::before,
-.connection-line::after {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 2px;
-  background: #00ff88;
-  left: -14px;
-}
-
-.connection-line::before {
-  top: 0;
-}
-
-.connection-line::after {
-  bottom: 0;
-}
-
-@media (max-width: 768px) {
-  .network-diagram {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .connection-line {
-    width: 100px;
-    height: 2px;
-    margin: 10px auto;
-  }
 }
