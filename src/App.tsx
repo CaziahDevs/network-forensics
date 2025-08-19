@@ -6,6 +6,7 @@ import type { Device, DeviceStatus, DeviceLog } from './types';
 import Modal from './components/common/Modal/Modal';
 import Network from './components/NetworkDiagram/Network/Network';
 import Scenario from './components/ScenarioInfo/Scenario';
+import Results from './components/Results/Results';
 // Mock data for now - we'll move this to a separate file later
 const mockDevices: Device[] = [
   { id: 'eng-ws01', name: 'ENG-WS01', ip: '192.168.1.10', department: 'engineering' },
@@ -127,36 +128,7 @@ const App: React.FC = () => {
         />
 
         {/* Results */}
-        {showResults && (
-          <section className="results">
-            <div className={`score ${calculateScore().percentage >= 75 ? 'correct' : 'incorrect'}`}>
-              Score: {calculateScore().correct}/{calculateScore().total} ({calculateScore().percentage}%)
-            </div>
-            <h3>Investigation Results:</h3>
-            <div className="results-details">
-              {Object.keys(mockCorrectAnswers).map(deviceId => {
-                const device = mockDevices.find(d => d.id === deviceId);
-                const userAnswer = userAnswers[deviceId] || 'No Selection';
-                const correctAnswer = mockCorrectAnswers[deviceId];
-                const isCorrect = userAnswer === correctAnswer;
-
-                return (
-                  <div key={deviceId} className="result-item">
-                    {isCorrect ? '✅' : '❌'} <strong>{device?.name}:</strong>
-                    <span className={isCorrect ? 'correct-answer' : 'incorrect-answer'}>
-                      {userAnswer}
-                    </span>
-                    {!isCorrect && (
-                      <div className="correct-answer-display">
-                        Correct answer: <span className="correct-answer">{correctAnswer}</span>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-        )}
+        {showResults && <Results calculateScore={calculateScore} correctAnswers={mockCorrectAnswers} userAnswers={userAnswers} devices={mockDevices} />}
 
         {/* Modal for logs */}
         {selectedLog && <Modal selectedLog={selectedLog} setSelectedLog={setSelectedLog} />}

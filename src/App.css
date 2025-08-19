@@ -30,24 +30,3 @@ body {
   color: #00ff88;
 }
 
-.results {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  display: flex !important;
-}
-
-.score {
-  font-size: 1.5rem;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.score.correct {
-  color: #00ff88;
-}
-
-.score.incorrect {
-  color: #ff6b6b;
-}
