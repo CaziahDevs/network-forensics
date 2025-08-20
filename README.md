@@ -1,69 +1,120 @@
-# React + TypeScript + Vite
+# Network Forensics Investigation Simulator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React/TypeScript web application that recreates a Security+ performance-based question I encountered for cybersecurity training. This simulator presents users with an incident response scenario where they must analyze forensic evidence to identify compromised systems and trace attack paths.
 
-Currently, two official plugins are available:
+![Main Interface Screenshot](./screenshots/main-interface.jpeg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Project Overview
 
-## Expanding the ESLint configuration
+This simulator demonstrates understanding of:
+- **Incident Response Methodology** - Following proper forensic analysis procedures
+- **Attack Vector Recognition** - Identifying phishing, lateral movement, and persistence techniques
+- **Network Forensics** - Analyzing logs, traffic patterns, and system artifacts
+- **Threat Hunting** - Correlating evidence across multiple systems
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚨 Attack Scenario
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The simulation presents a realistic corporate breach:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Initial Compromise** - Phishing email targets Engineering department
+2. **Credential Harvesting** - Malicious link steals user credentials
+3. **Lateral Movement** - Attacker pivots through jump box to R&D network
+4. **Data Exfiltration** - Attempted theft of proprietary research data
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+![Scenario Details Screenshot](./screenshots/scenario-modal.jpeg)
+(./screenshots/scenario-modal2.jpeg)
+
+
+## 🔍 Technical Features
+
+### Architecture
+- **React 18** with TypeScript for type safety
+- **Component-based design** with clear separation of concerns
+- **Custom CSS** with cybersecurity-themed styling
+- **Modal system** for detailed forensic log analysis
+
+### Forensic Evidence
+- **Vulnerability scan results** with subtle compromise indicators
+- **System event logs** requiring timeline correlation
+- **Network traffic analysis** showing C2 communications
+- **Jump box authentication logs** revealing lateral movement
+- **Firewall logs** with blocked exfiltration attempts
+
+![Device Analysis Screenshot](./screenshots/device-logs.jpeg)
+
+## 🏗️ Component Structure
+
+```
+src/
+├── components/
+│   ├── Network/           # Main network topology
+│   ├── Departments/       # Engineering & R&D workstation groups
+│   ├── JumpBox/          # Network pivot point
+│   ├── Firewall/         # Network traffic analysis
+│   ├── Modal/            # Log display system
+│   └── Results/          # Professional SOC-style reporting
+├── data/
+│   ├── devices.ts        # Network device definitions
+│   └── answers.ts        # Forensic logs and correct classifications
+└── types/
+    └── index.ts          # TypeScript interfaces
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎮 How to Use
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Read the incident alert** - Understand the security event context
+2. **Analyze forensic evidence** - Click workstations, jump box, and firewall to view logs
+3. **Classify each system** - Determine if devices are Clean, Infected, or Origin point
+4. **Submit analysis** - Receive detailed feedback on forensic accuracy
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+![Results Report Screenshot](./screenshots/results-report.jpeg)
+(./screenshots/results-report2.jpeg)
+## 🎯 Learning Objectives
+
+This simulator teaches:
+- **Evidence correlation** - Linking timestamps across multiple log sources
+- **Attack pattern recognition** - Identifying phishing, persistence, and lateral movement
+- **Network forensics** - Understanding traffic flows and segmentation bypasses
+- **Incident classification** - Distinguishing between compromise indicators and normal activity
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/CaziahDevs/network-forensics.git
+cd network-forensics
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
+
+Visit `http://localhost:5173` to access the simulator.
+
+## 🛠️ Built With
+
+- **React 18** - UI framework
+- **TypeScript** - Type safety and better development experience
+- **Vite** - Fast build tool and development server
+- **Custom CSS** - Cybersecurity-themed styling
+
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+---
+
+**Note**: This is an educational simulation. All attack techniques and forensic evidence are fictional and designed for training purposes only.
