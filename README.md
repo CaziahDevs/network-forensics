@@ -22,7 +22,8 @@ The simulation presents a realistic corporate breach:
 4. **Data Exfiltration** - Attempted theft of proprietary research data
 
 ![Scenario Details Screenshot](./screenshots/scenario-modal.jpeg)
-(./screenshots/scenario-modal2.jpeg)
+
+![Scenario Details Screenshot](./screenshots/scenario-modal2.jpeg)
 
 
 ## 🔍 Technical Features
@@ -68,7 +69,8 @@ src/
 4. **Submit analysis** - Receive detailed feedback on forensic accuracy
 
 ![Results Report Screenshot](./screenshots/results-report.jpeg)
-(./screenshots/results-report2.jpeg)
+
+![Results Report Screenshot](./screenshots/results-report2.jpeg)
 ## 🎯 Learning Objectives
 
 This simulator teaches:
